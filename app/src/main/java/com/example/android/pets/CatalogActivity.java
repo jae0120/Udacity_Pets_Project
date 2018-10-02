@@ -27,7 +27,7 @@ import com.example.android.pets.data.PetContract.PetEntry;
  */
 public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    SimpleCursorAdapter mAdapter;
+    PetCursorAdapter mAdapter;
     ListView displayView;
     static final String[] PROJECTION = {
             PetEntry._ID,
@@ -52,13 +52,10 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         });
         displayView = findViewById(R.id.list_view_pet);
 
-        String[] fromColumns = {PetEntry.COLUMN_PET_NAME,
-                PetEntry.COLUMN_PET_BREED};
-        int [] toViews = {R.id.name, R.id.summary};
 
 
 
-        mAdapter = new SimpleCursorAdapter(this, R.layout.list_item, null, fromColumns, toViews, 0);
+        mAdapter = new PetCursorAdapter(this, null);
         displayView.setAdapter(mAdapter);
         // Find the ListView which will be populated with the pet data
         ListView petListView = (ListView) findViewById(R.id.list_view_pet);
